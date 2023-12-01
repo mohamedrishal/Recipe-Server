@@ -7,10 +7,15 @@ const cors = require('cors')
 // router
 const router = require('./Routes/router')
 
+// connection import
+ require('./DB/connection')
+
 // create an express application
 const rbServer = express()
 
 rbServer.use(cors())
+
+// this is middleware to convert json file to object
 rbServer.use(express.json())
 // router use
 rbServer.use(router)
