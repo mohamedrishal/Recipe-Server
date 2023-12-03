@@ -6,6 +6,7 @@ const cors = require('cors')
 
 // router
 const router = require('./Routes/router')
+const jwtMiddleware = require('./Middlewares/jwtMiddlewares')
 
 // connection import
  require('./DB/connection')
@@ -17,6 +18,7 @@ rbServer.use(cors())
 
 // this is middleware to convert json file to object
 rbServer.use(express.json())
+
 // router use
 rbServer.use(router)
 
