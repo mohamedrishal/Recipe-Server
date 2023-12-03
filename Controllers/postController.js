@@ -23,3 +23,25 @@ exports.addPosts = async (req, res) => {
     res.status(401).json(`Request Failed,Error : ${err}`);
   }
 };
+
+
+// getUserPosts 
+exports.getUserPosts = async (req,res)=>{
+  const userId = req.payload
+  try{
+    const userPosts = await posts.find({userId})
+    res.status(200).json(userPosts)
+  }catch(err){
+    res.status(401).json(err);
+  }
+}
+
+// allPosts
+exports.getallUsersPosts = async (req,res)=>{
+  try{
+    const allPosts = await posts.find()
+    res.status(200).json(allPosts)
+  }catch(err){
+    res.status(401).json(err);
+  }
+}

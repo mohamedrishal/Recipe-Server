@@ -15,5 +15,16 @@ router.post('/user/login',userController.login)
 router.post('/posts/add',jwtMiddleware,multerConfig.single('recipeImage'),postController.addPosts)
 
 
+// getUserPosts
+router.get('/user/all-posts',jwtMiddleware,postController.getUserPosts)
+
+// getallPosts
+router.get('/posts/all',jwtMiddleware,postController.getallUsersPosts)
+
+// whopost
+router.get('/user/:userid',userController.getWhoPost)
+
+
+
 // export router
 module.exports = router

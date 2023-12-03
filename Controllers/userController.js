@@ -52,3 +52,14 @@ exports.login = async (req, res) => {
   }
 
 };
+
+// getwhoPost
+exports.getWhoPost = async (req,res)=>{
+  const findUser = req.params.userid
+  try{
+    const userPosts = await users.findById(findUser)
+    res.status(200).json(userPosts)
+  }catch(err){
+    res.status(401).json(err);
+  }
+}
