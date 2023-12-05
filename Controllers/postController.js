@@ -45,3 +45,36 @@ exports.getallUsersPosts = async (req,res)=>{
     res.status(401).json(err);
   }
 }
+
+// edit project 
+exports.editPostController = async (req,res)=>{
+  // get Project id     
+  const {id} = req.params
+  const userId = req.payload
+  const {recipename,make, recipeImage} = req.body
+
+  const uploadPostImage = req.file?req.file.filename : recipeImage
+
+  try{
+
+    const updatePost = await posts.findByIdAndUpdate({_id:id},{recipename,make,recipeImage:uploadPostImage,userId},{new:true})
+    await updatePost.save()
+    res.status(200).json(updatePost)
+
+  }catch(err){
+    res.status(401).json(`Request failed Error : ${err}`)
+  }
+
+}
+
+// delete posts
+exports.deletepostsController = async (req,res)=>{
+
+  const {id} = req.params
+  try{
+    const removeProject = await  posts.findByIdAndDelete({_id:id})
+    res.status(200).json(removeProject)
+  }catch(err){
+    res.status(401).json(err)
+  }
+}

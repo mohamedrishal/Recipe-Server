@@ -24,6 +24,11 @@ router.get('/posts/all',jwtMiddleware,postController.getallUsersPosts)
 // whopost
 router.get('/user/:userid',userController.getWhoPost)
 
+// edit posts 
+router.put('/posts/edit/:id',jwtMiddleware,multerConfig.single("recipeImage"),postController.editPostController)
+
+// delete posts 
+router.delete('/posts/delete/:id',jwtMiddleware,postController.deletepostsController)
 
 
 // export router
