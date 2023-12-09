@@ -72,8 +72,8 @@ exports.deletepostsController = async (req,res)=>{
 
   const {id} = req.params
   try{
-    const removeProject = await  posts.findByIdAndDelete({_id:id})
-    res.status(200).json(removeProject)
+    const removePost = await  posts.findByIdAndDelete({_id:id})
+    res.status(200).json(removePost)
   }catch(err){
     res.status(401).json(err)
   }

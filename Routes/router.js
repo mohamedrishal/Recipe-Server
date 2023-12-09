@@ -30,6 +30,9 @@ router.put('/posts/edit/:id',jwtMiddleware,multerConfig.single("recipeImage"),po
 // delete posts 
 router.delete('/posts/delete/:id',jwtMiddleware,postController.deletepostsController)
 
+// edit user
+router.put('/user/edit',jwtMiddleware,multerConfig.single("profile"),userController.editUser)
+
 
 // export router
 module.exports = router
