@@ -65,7 +65,6 @@ exports.getWhoPost = async (req,res)=>{
 }
 
 // edit user 
-
 exports.editUser = async (req,res)=>{
 
   const userId = req.payload

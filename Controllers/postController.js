@@ -38,8 +38,12 @@ exports.getUserPosts = async (req,res)=>{
 
 // allPosts
 exports.getallUsersPosts = async (req,res)=>{
+  const searchKey = req.query.search
+  const query = {
+    recipename:{$regex:searchKey , $options:"i"}
+  }
   try{
-    const allPosts = await posts.find()
+    const allPosts = await posts.find(query)
     res.status(200).json(allPosts)
   }catch(err){
     res.status(401).json(err);
