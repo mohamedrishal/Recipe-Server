@@ -34,5 +34,14 @@ router.delete('/posts/delete/:id',jwtMiddleware,postController.deletepostsContro
 router.put('/user/edit',jwtMiddleware,multerConfig.single("profile"),userController.editUser)
 
 
+// like Post
+router.post('/posts/like/:id',jwtMiddleware,postController.likePostController)
+
+// unlike Post
+router.post('/posts/unlike/:id',jwtMiddleware,postController.unlikePostController)
+
+
+
+
 // export router
 module.exports = router
